@@ -5,18 +5,18 @@
 #include "method/operators/mutation/mutations/ECVRPTW/CECVRPTWShawClientRemoval.h"
 #include "method/operators/mutation/mutations/ECVRPTW/CECVRPTWRandomClientInsertion.h"
 #include "method/operators/mutation/mutations/ECVRPTW/CECVRPTWShawClientInsertion.h"
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 
 std::vector<AMutation*>* CALNSMutationFactory::CreateRemovalOperators(AProblem& problem)
 {
-    auto randomClientRemoval = new CECVRPTWRandomClientRemoval(dynamic_cast<CECVRPTW&>(problem));
-    auto shawClientRemoval = new CECVRPTWShawClientRemoval(dynamic_cast<CECVRPTW&>(problem));
+    auto randomClientRemoval = new CECVRPTWRandomClientRemoval(dynamic_cast<CCVRPTW&>(problem));
+    auto shawClientRemoval = new CECVRPTWShawClientRemoval(dynamic_cast<CCVRPTW&>(problem));
     return new std::vector<AMutation*>{ randomClientRemoval, shawClientRemoval };
 }
 
 std::vector<AMutation*>* CALNSMutationFactory::CreateInsertionOperators(AProblem& problem)
 {
-    auto greedyClientInsertion = new CECVRPTWRandomClientInsertion(dynamic_cast<CECVRPTW&>(problem));
-    auto shawClientInsertion = new CECVRPTWShawClientInsertion(dynamic_cast<CECVRPTW&>(problem));
+    auto greedyClientInsertion = new CECVRPTWRandomClientInsertion(dynamic_cast<CCVRPTW&>(problem));
+    auto shawClientInsertion = new CECVRPTWShawClientInsertion(dynamic_cast<CCVRPTW&>(problem));
     return new std::vector<AMutation*>{ greedyClientInsertion, shawClientInsertion };
 }

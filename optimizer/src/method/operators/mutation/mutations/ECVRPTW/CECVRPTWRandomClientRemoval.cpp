@@ -1,14 +1,14 @@
 #include "CECVRPTWRandomClientRemoval.h"
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 #include "utils/random/CRandom.h"
 
-CECVRPTWRandomClientRemoval::CECVRPTWRandomClientRemoval(CECVRPTW& problemDefinition)
+CECVRPTWRandomClientRemoval::CECVRPTWRandomClientRemoval(CCVRPTW& problemDefinition)
     : m_ProblemDefinition(problemDefinition)
 {}
 
 void CECVRPTWRandomClientRemoval::Mutate(SProblemEncoding& problemEncoding, AIndividual& child)
 {
-	int customersToRemove = CRandom::GetInt(1, problemEncoding.m_Encoding[0].m_SectionDescription.size() - m_ProblemDefinition.GetECVRPTWTemplate().GetVehicleCount() - 1);
+	int customersToRemove = CRandom::GetInt(1, problemEncoding.m_Encoding[0].m_SectionDescription.size() - 1);
 	for (int i = 0; i < customersToRemove; i++)
     {
 		int customerIdx = CRandom::GetInt(0, child.m_Genotype.m_IntGenotype.size());

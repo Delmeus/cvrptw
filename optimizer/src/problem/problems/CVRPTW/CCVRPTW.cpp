@@ -1,10 +1,10 @@
-#include "CECVRPTW.h"
+#include "CCVRPTW.h"
 #include "../../../utils/logger/CExperimentLogger.h"
-#include "CECVRPTWSolution.h"
+#include "CCVRPTWSolution.h"
 #include <iostream>
 #include <sstream>
 
-CECVRPTW::CECVRPTW(CECVRPTWTemplate& ecvrptwBase)
+CCVRPTW::CCVRPTW(CCVRPTWTemplate& ecvrptwBase)
     : m_ECVRPTWTemplate(ecvrptwBase)
 {
     CreateProblemEncoding();
@@ -20,16 +20,16 @@ CECVRPTW::CECVRPTW(CECVRPTWTemplate& ecvrptwBase)
     };
 }
 
-std::vector<int> CECVRPTW::GetRealPath(AIndividual& individual)
+std::vector<int> CCVRPTW::GetRealPath(AIndividual& individual)
 {
-    CECVRPTWSolution solution(m_ECVRPTWTemplate);
+    CCVRPTWSolution solution(m_ECVRPTWTemplate);
     solution.BuildSolution(individual.m_Genotype.m_IntGenotype);
     return solution.GetSolution();
 }
 
-void CECVRPTW::Evaluate(AIndividual& individual) 
+void CCVRPTW::Evaluate(AIndividual& individual)
 {
-    CECVRPTWSolution solution(m_ECVRPTWTemplate);
+    CCVRPTWSolution solution(m_ECVRPTWTemplate);
     solution.BuildSolution(individual.m_Genotype.m_IntGenotype);
 
     individual.m_Evaluation[0] = solution.GetTotalDistance();
@@ -42,13 +42,13 @@ void CECVRPTW::Evaluate(AIndividual& individual)
     }
 }
 
-void CECVRPTW::CreateProblemEncoding()
+void CCVRPTW::CreateProblemEncoding()
 {
     auto& customers = m_ECVRPTWTemplate.GetCustomers();
 
     SEncodingSection citiesSection = SEncodingSection
     {
-        std::vector<SEncodingDescriptor>(customers.size() + m_ECVRPTWTemplate.GetVehicleCount() - 1,
+        std::vector<SEncodingDescriptor>(customers.size() - 1,
             SEncodingDescriptor{
                     (float)customers[0], (float)customers[customers.size()-1]
             }
@@ -59,7 +59,7 @@ void CECVRPTW::CreateProblemEncoding()
     m_ProblemEncoding = SProblemEncoding{3, {citiesSection} };
 }
 
-void CECVRPTW::LogSolution(AIndividual& individual)
+void CCVRPTW::LogSolution(AIndividual& individual)
 {
     auto realPath = GetRealPath(individual);
     std::string solution;
@@ -72,7 +72,7 @@ void CECVRPTW::LogSolution(AIndividual& individual)
     CExperimentLogger::AddLine(solution.c_str());
 }
 
-void CECVRPTW::LogAdditionalData()
+void CCVRPTW::LogAdditionalData()
 {
     std::ostringstream pointsData;
     auto& cityData = m_ECVRPTWTemplate.GetCities();

@@ -8,7 +8,7 @@
 #include "method/operators/mutation/mutations/CLeastAssignedResourceMutation.h"
 #include "utils/fileReader/CReadUtils.h"
 #include "problem/problems/MSRCPSP/CMSRCPSP_TA.h"
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 #include "method/operators/mutation/mutations/ECVRPTW/CECVRPTWRandomClientRemoval.h"
 #include "method/operators/mutation/mutations/ECVRPTW/CECVRPTWShawClientRemoval.h"
 #include "method/operators/mutation/mutations/ECVRPTW/CECVRPTWShawClientInsertion.h"
@@ -52,22 +52,22 @@ AMutation *CMutationFactory::Create(SConfigMap *configMap, const std::string& co
         float mutProb = std::stof(vec[1]);
         return new CLeastAssignedResourceMutation(mutProb, dynamic_cast<CMSRCPSP_TA&>(problem));
     }
-    // ECVRPTW
+    // CVRPTW
     else if (strcmp(opName, "ECVRPTW_RandomClientRemoval") == 0)
     {
-        return new CECVRPTWRandomClientRemoval(dynamic_cast<CECVRPTW&>(problem));
+        return new CECVRPTWRandomClientRemoval(dynamic_cast<CCVRPTW&>(problem));
     }
     else if (strcmp(opName, "ECVRPTW_ShawClientRemoval") == 0)
     {
-        return new CECVRPTWShawClientRemoval(dynamic_cast<CECVRPTW&>(problem));
+        return new CECVRPTWShawClientRemoval(dynamic_cast<CCVRPTW&>(problem));
     }
     else if (strcmp(opName, "ECVRPTW_RandomClientInsertion") == 0)
     {
-        return new CECVRPTWRandomClientInsertion(dynamic_cast<CECVRPTW&>(problem));
+        return new CECVRPTWRandomClientInsertion(dynamic_cast<CCVRPTW&>(problem));
     }
     else if (strcmp(opName, "ECVRPTW_ShawClientInsertion") == 0)
     {
-        return new CECVRPTWShawClientInsertion(dynamic_cast<CECVRPTW&>(problem));
+        return new CECVRPTWShawClientInsertion(dynamic_cast<CCVRPTW&>(problem));
     }
     return nullptr;
 }

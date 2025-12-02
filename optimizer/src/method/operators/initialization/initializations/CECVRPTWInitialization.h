@@ -2,12 +2,12 @@
 
 #include "../AInitialization.h"
 #include "../../../individual/SO/SSOIndividual.h"
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 
 class CECVRPTWInitialization : public AInitialization
 {
 public:
-    explicit CECVRPTWInitialization(CECVRPTW& problem) : m_Problem(problem) {}
+    explicit CECVRPTWInitialization(CCVRPTW& problem) : m_Problem(problem) {}
     ~CECVRPTWInitialization() override = default;
 
     SSOIndividual* CreateSOIndividual(SProblemEncoding& encoding) override;
@@ -17,5 +17,5 @@ public:
     SParticle* CreateParticle(SProblemEncoding& encoding) override;
 private:
     void InitGenotype(SProblemEncoding& encoding, SGenotype& genotype) const;
-    CECVRPTW& m_Problem;
+    CCVRPTW& m_Problem;
 };

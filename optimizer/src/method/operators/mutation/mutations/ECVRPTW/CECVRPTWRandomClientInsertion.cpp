@@ -1,8 +1,8 @@
 #include "CECVRPTWRandomClientInsertion.h"
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 #include "utils/random/CRandom.h"
 
-CECVRPTWRandomClientInsertion::CECVRPTWRandomClientInsertion(CECVRPTW& problemDefinition)
+CECVRPTWRandomClientInsertion::CECVRPTWRandomClientInsertion(CCVRPTW& problemDefinition)
     : m_ProblemDefinition(problemDefinition)
 {}
 

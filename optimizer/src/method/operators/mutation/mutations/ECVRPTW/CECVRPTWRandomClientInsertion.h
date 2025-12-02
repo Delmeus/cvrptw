@@ -4,14 +4,14 @@
 #include <chrono>
 #include "method/operators/mutation/AMutation.h"
 
-class CECVRPTW;
+class CCVRPTW;
 
 class CECVRPTWRandomClientInsertion : public AMutation
 {
 public:
-	explicit CECVRPTWRandomClientInsertion(CECVRPTW& problemDefinition);
+	explicit CECVRPTWRandomClientInsertion(CCVRPTW& problemDefinition);
 	void Mutate(SProblemEncoding& problemEncoding, AIndividual& child) override;
 
 private:
-    CECVRPTW& m_ProblemDefinition; // TODO - should be const
+    CCVRPTW& m_ProblemDefinition; // TODO - should be const
 };

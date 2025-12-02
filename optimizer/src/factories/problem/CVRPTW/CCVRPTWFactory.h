@@ -1,12 +1,12 @@
 #pragma once
 
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 #include <fstream>
 #include <vector>
 
-class CECVRPTWFactory {
+class CCVRPTWFactory {
 public:
-    static CECVRPTW* CreateECVRPTW(const char* problemDefinitionPath);
+    static CCVRPTW* CreateCVRPTW(const char* problemDefinitionPath);
     static void DeleteObjects();
 private:
     static const std::string s_Delimiter;
@@ -18,7 +18,7 @@ private:
     static const std::string s_VelocityKey;
     static const std::string s_VehicleCountKey;
 
-    static CECVRPTWTemplate* cvrpTemplate;
-    static CECVRPTWTemplate* ReadECVRPTWTemplate(const char* problemDefinitionPath);
-    static void ReadCities(std::ifstream& fileStream, int& dimension, std::vector<SCityECVRPTW>& cities);
+    static CCVRPTWTemplate* cvrpTemplate;
+    static CCVRPTWTemplate* ReadCVRPTWTemplate(const char* problemDefinitionPath);
+    static void ReadCities(std::ifstream& fileStream, int& dimension, std::vector<SCityCVRPTW>& cities);
 };

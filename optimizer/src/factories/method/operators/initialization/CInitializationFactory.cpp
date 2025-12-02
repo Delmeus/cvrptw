@@ -13,8 +13,8 @@ AInitialization *CInitializationFactory::Create(SConfigMap* configMap, AProblem&
         return new CInitialization();
     }
 
-    if (strcmp(initializationName.c_str(), "ECVRPTW") == 0)
-        return new CECVRPTWInitialization(dynamic_cast<CECVRPTW&>(problem));
+    if (strcmp(initializationName.c_str(), "CVRPTW") == 0)
+        return new CECVRPTWInitialization(dynamic_cast<CCVRPTW&>(problem));
 
     throw std::runtime_error("Initialization name: " + std::string(initializationName) + " not supported");
 }

@@ -2,6 +2,6 @@
 
 enum class ENodeType : char {
 	Depot = 'd',
-	ChargingStation = 'f',
+//	ChargingStation = 'f',
 	Customer = 'c',
 };

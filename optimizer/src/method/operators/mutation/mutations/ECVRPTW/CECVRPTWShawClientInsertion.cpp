@@ -1,12 +1,12 @@
 #include "CECVRPTWShawClientInsertion.h"
-#include "problem/problems/ECVRPTW/CECVRPTW.h"
+#include "problem/problems/CVRPTW/CCVRPTW.h"
 #include "utils/random/CRandom.h"
 
 #define DEMANDWEIGHT 0.1
 #define TIMEWINDOWWEIGHT 0.6
 #define DISTANCEWEIGHT 0.3
 
-CECVRPTWShawClientInsertion::CECVRPTWShawClientInsertion(CECVRPTW& problemDefinition)
+CECVRPTWShawClientInsertion::CECVRPTWShawClientInsertion(CCVRPTW& problemDefinition)
     : m_ProblemDefinition(problemDefinition)
 {}
 

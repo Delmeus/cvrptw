@@ -6,7 +6,7 @@
 #include "../../individual/SGenotype.h"
 #include "../../individual/SO/SSOIndividual.h"
 #include "../../individual/SO/SParticle.h"
-#include "../../../problem/problems/ECVRPTW/CECVRPTW.h"
+#include "../../../problem/problems/CVRPTW/CCVRPTW.h"
 
 class AInitialization
 {

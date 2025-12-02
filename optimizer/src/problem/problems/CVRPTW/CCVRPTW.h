@@ -1,14 +1,14 @@
 #pragma once
 
-#include "CECVRPTWTemplate.h"
+#include "CCVRPTWTemplate.h"
 #include "../../AProblem.h"
 #include "method/individual/SGenotype.h"
 #include <iterator>
 
-class CECVRPTW : public AProblem
+class CCVRPTW : public AProblem
 {
 public:
-    explicit CECVRPTW(CECVRPTWTemplate& cvrpBase);
+    explicit CCVRPTW(CCVRPTWTemplate& cvrpBase);
 
     SProblemEncoding& GetProblemEncoding() override { return m_ProblemEncoding; }
 
@@ -17,13 +17,13 @@ public:
 
     void LogAdditionalData();
 
-    CECVRPTWTemplate& GetECVRPTWTemplate() { return m_ECVRPTWTemplate; }
+    CCVRPTWTemplate& GetECVRPTWTemplate() { return m_ECVRPTWTemplate; }
     std::vector<int> GetRealPath(AIndividual& individual);
 
 protected:
     std::vector<size_t> m_UpperBounds;
     SProblemEncoding m_ProblemEncoding;
-    CECVRPTWTemplate& m_ECVRPTWTemplate;
+    CCVRPTWTemplate& m_ECVRPTWTemplate;
     std::vector<float> m_MaxObjectiveValues;
     std::vector<float> m_MinObjectiveValues;
 
