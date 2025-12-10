@@ -70,6 +70,10 @@ void CCVRPTW::LogSolution(AIndividual& individual)
         }
     }
     CExperimentLogger::AddLine(solution.c_str());
+
+    std::ostringstream costTimeData;
+    costTimeData << "Distance:" << individual.m_Evaluation[0] << ";Duration:" << individual.m_Evaluation[1];
+    CExperimentLogger::AddLine(costTimeData.str().c_str());
 }
 
 void CCVRPTW::LogAdditionalData()

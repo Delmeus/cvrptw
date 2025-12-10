@@ -1,6 +1,7 @@
 #pragma once
 
 #include "problem/problems/CVRPTW/CCVRPTW.h"
+#include "./CCVRPTWParser.h"
 #include <fstream>
 #include <vector>
 

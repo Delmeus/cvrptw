@@ -43,12 +43,20 @@ void CNTGA2_ALNSFactory::DeleteObjects()
 {
     delete rankedTournament;
     delete gapSelectionByRandomDim;
-    for (int i = 0; i < s_alnsRemovalMutations->size(); i++) {
-        delete (*s_alnsRemovalMutations)[i];
+
+    if (s_alnsRemovalMutations != nullptr) {
+        for (int i = 0; i < s_alnsRemovalMutations->size(); i++) {
+            delete (*s_alnsRemovalMutations)[i];
+        }
+        delete s_alnsRemovalMutations;
+        s_alnsRemovalMutations = nullptr;
     }
-    for (int i = 0; i < s_alnsInsertionMutations->size(); i++) {
-        delete (*s_alnsInsertionMutations)[i];
+
+    if (s_alnsInsertionMutations != nullptr) {
+        for (int i = 0; i < s_alnsInsertionMutations->size(); i++) {
+            delete (*s_alnsInsertionMutations)[i];
+        }
+        delete s_alnsInsertionMutations;
+        s_alnsInsertionMutations = nullptr;
     }
-    delete s_alnsInsertionMutations;
-    delete s_alnsRemovalMutations;
 }

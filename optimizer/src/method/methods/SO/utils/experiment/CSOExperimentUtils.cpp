@@ -83,6 +83,7 @@ void CSOExperimentUtils::LogResultData(SSOIndividual& best, AProblem& problem)
     std::string resultString = BestToCSVString(best);
     CExperimentLogger::LogResult(resultString.c_str());
     problem.LogSolution(best);
+    CExperimentLogger::LogData();
 }
 
 std::string CSOExperimentUtils::BestToCSVString(const SSOIndividual &best)
@@ -90,8 +91,8 @@ std::string CSOExperimentUtils::BestToCSVString(const SSOIndividual &best)
     std::ostringstream oss;
     oss << best.m_Fitness; // Append the fitness
 
-    // Append each element of the evaluation vector
-    for (const auto& value : best.m_NormalizedEvaluation) {
+    // Append each element of the raw evaluation vector
+    for (const auto& value : best.m_Evaluation) {
         oss << ";" << value;
     }
 

@@ -33,16 +33,26 @@ void CGA::RunOptimization()
     }
 
     CSOExperimentUtils::AddExperimentData(generation, m_Population);
+    SSOIndividual* globalBest = CSOExperimentUtils::FindBest(m_Population);
+    int bestGeneration = generation;
 
     while (generation < m_GenerationLimit)
     {
+        generation++;
         EvolveToNextGeneration();
         CSOExperimentUtils::AddExperimentData(generation, m_Population);
-        generation++;
+
+        auto* currentBest = CSOExperimentUtils::FindBest(m_Population);
+        if (currentBest->m_Fitness < globalBest->m_Fitness)
+        {
+            globalBest = currentBest;
+            bestGeneration = generation;
+        }
     }
 
     auto* best = CSOExperimentUtils::FindBest(m_Population);
     CSOExperimentUtils::LogResultData(*best, m_Problem);
+    // CSOExperimentUtils::LogResultData(*globalBest, m_Problem, bestGeneration);
 }
 
 void CGA::CreateIndividual()
