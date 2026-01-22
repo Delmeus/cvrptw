@@ -92,7 +92,7 @@ std::string CSOExperimentUtils::BestToCSVString(const SSOIndividual &best)
     oss << best.m_Fitness; // Append the fitness
 
     // Append each element of the raw evaluation vector
-    for (const auto& value : best.m_Evaluation) {
+    for (const auto& value : best.m_NormalizedEvaluation) {
         oss << ";" << value;
     }
 

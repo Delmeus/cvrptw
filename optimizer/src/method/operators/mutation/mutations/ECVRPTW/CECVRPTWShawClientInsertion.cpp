@@ -2,9 +2,8 @@
 #include "problem/problems/CVRPTW/CCVRPTW.h"
 #include "utils/random/CRandom.h"
 
-#define DEMANDWEIGHT 0.1
 #define TIMEWINDOWWEIGHT 0.6
-#define DISTANCEWEIGHT 0.3
+#define DISTANCEWEIGHT 0.4
 
 CECVRPTWShawClientInsertion::CECVRPTWShawClientInsertion(CCVRPTW& problemDefinition)
     : m_ProblemDefinition(problemDefinition)
@@ -35,13 +34,12 @@ void CECVRPTWShawClientInsertion::Mutate(SProblemEncoding& problemEncoding, AInd
         {
 			if (genotype[j] != VEHICLE_DELIMITER)
             {
-				float distanceDemand = DEMANDWEIGHT * abs(cities[genotype[j]].m_Demand - customerToCompare.m_Demand);
 				float distanceTimeWindow = TIMEWINDOWWEIGHT * abs(cities[genotype[j]].m_ReadyTime - customerToCompare.m_ReadyTime);
 				float distanceDistance = DISTANCEWEIGHT * distanceMatrix[missingCustomers[i]][genotype[j]].m_Distance;
-				if (distanceDemand + distanceTimeWindow + distanceDistance < minDistance)
+				if (distanceTimeWindow + distanceDistance < minDistance)
                 {
 					customerWithMinDistanceIdx = j;
-					minDistance = distanceDemand + distanceTimeWindow + distanceDistance;
+					minDistance = distanceTimeWindow + distanceDistance;
 				}
 			}
 		}
